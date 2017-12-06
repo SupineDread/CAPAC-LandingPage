@@ -1,0 +1,35 @@
+<div class="col-lg-3">
+
+</div>
+{{#each eventos}}
+<div class="modal-dialog" style="z-index: 1;">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title" style="text-transform: uppercase; text-align: center;">{{title}}</h4>
+    </div>
+    <div class="modal-body">
+      <form method="POST" action="#">
+        <div class="row" id="divDatosEvento">
+          <div class="col-md-6">
+            <label>Información del evento: </label><br>
+            {{text}}
+            <br>
+            <label>Fecha: </label><br>
+              {{date}}
+            <br>
+            <label>Horario: </label><br>
+              {{hourStart}} - {{hourEnd}}
+            <br>
+            <label>Donativo: </label><br>
+              ${{donation}}
+            <br>
+          </div>
+          <div class="col-md-6">
+            <img id="imagenEvento" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Unclesamwantyou.jpg/205px-Unclesamwantyou.jpg" width="250" height="400">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{{/each}}

@@ -1,0 +1,36 @@
+<section id="portfolio">
+        <div class="container">
+            <div class="center">
+               <h2>Galería</h2>
+               <p class="lead"></p>
+            </div>
+            <ul class="portfolio-filter text-center">
+                <li><a class="btn btn-default active" href="#" data-filter="*">Todas las fotos</a></li>
+                {{#each galerias as |gal|}}
+                <li><a class="btn btn-default" href="#" data-filter=".{{gal.id}}">{{gal.name}}</a></li>
+                {{/each}}
+            </ul>
+                <div class="row">
+                <div class="portfolio-items">
+                  {{#each galerias as |gal|}}
+                    <div class="portfolio-item {{gal.id}} apps col-xs-12 col-sm-4 col-md-3">
+
+                          {{#each pictures as |pic|}}
+                          <div class="recent-work-wrap">
+                            <img class="img-responsive" src="{{pic}}" alt="{{gal.name}}">
+                            <div class="overlay">
+                                <div class="recent-work-inner">
+                                    <h3><a href="#">{{gal.name}}</a></h3>
+                                    <p></p>
+                                    <a class="preview" href="{{pic}}" rel="prettyPhoto"><i class="fa fa-eye"></i>View</a>
+                                </div>
+                            </div>
+                            </div>
+                          {{/each}}
+
+                    </div><!--/.portfolio-item-->
+                    {{/each}}
+            </div>
+            </div>
+        </div>
+    </section><!--/#portfolio-item-->
