@@ -47,11 +47,43 @@ app.get('/galeria', function(req, res) {
 });
 
 app.get('/blog', function(req, res){
-  res.render('blog');
+  request.get(`${API_CAPAC}/entrada`, (err, response, body) => {
+    if(err) return res.render('home', {evento: {err: 'No se pudieron cargar las entradas del blog.'}});
+    let entradas = JSON.parse(body).reverse();
+    return res.render('blog', {entradas: entradas.map(e => {
+      let temp = e;
+      temp.createdAt = moment(e.createdAt).format('DD/MM/YYYY');
+      return temp;
+    })});
+  });
 });
 
 app.get('/contacto', function(req, res){
   res.render('contacto');
+});
+
+app.post('/send', (req, res) => {
+  transport.sendMail({
+    from: 'CAPAC INFO <arcaniteamp@gmail.com>',
+    to: 'hazielfe@gmail.com',
+    subject: 'CAPAC INFO',
+    html: `
+      <h1>CAPAC INFO</h1><br>
+      <p><strong>Nombre: </strong>${req.body.name}</p><br>
+      <p><strong>Email: </strong>${req.body.to}</p><br>
+      <p><strong>Telefono: </strong>${req.body.phone}</p><br>
+      <p><strong>Asunto: </strong>${req.body.subject}</p><br>
+      <p><strong>Mensaje: </strong>${req.body.message}</p><br>
+    `
+  }, (err, response) => {
+    if(err) {
+      console.log(err);
+      res.render('index', {err: 'No se pudo enviar el formulario.'});
+    } else {
+      console.log(response);
+      res.redirect('/contacto');
+    }
+  });
 });
 
 app.listen(80, function(err, res){

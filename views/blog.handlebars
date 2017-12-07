@@ -1,16 +1,18 @@
+{{#each entradas}}
 <div style="padding-top: 5px; padding-bottom: 5px;">
   <div style="width:75%; border: 1px solid; border-radius: 50px 15px; border-color: #E0A66C;">
     <header style="text-align: center; border-radius: 7px; padding-top: 3px;">
-      <h2>Titulo de la columna</h2>
+      <h2>{{title}}</h2>
     </header>
     <div style="text-align: center;">
-      <img src="url de foto>" style="width: 50%; height: 20%;"/>
+      <img src="{{img}}" style="width: 50%; height: 20%;"/>
     </div>
     <div style="padding-left: 7px; overflow: hidden">
-      <p>Aqui va todo el texto de la columna</p>
+      <p>{{text}}</p>
     </div>
     <footer style="padding-left: 7px;">
-      <h2>Escrito por..., Tal dia</h2>
+      <h2>{{user.name}}, {{createdAt}}</h2>
     </footer>
   </div>
 </div>
+{{/each}}
