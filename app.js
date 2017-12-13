@@ -43,7 +43,7 @@ app.get('/eventos-proximos', function(req, res){
   request.get(`${API_CAPAC}/evento`, (err, response, body) => {
     if(err) return res.render('home', {evento: {err: 'No se pudieron cargar los eventos.'}});
     let eventos = JSON.parse(body).reverse();
-    return res.render('eventosproximos', {eventos, moment});
+    return res.render('eventosproximos', {eventos: eventos.map(e => {return {...e, texto: e.text.length >= 200 ? e.text.substr(0, 200) + '...' : e.text}}), moment});
   });
 })
 
@@ -62,6 +62,7 @@ app.get('/blog', function(req, res){
     return res.render('blog', {entradas: entradas.map(e => {
       let temp = e;
       temp.createdAt = moment(e.createdAt).format('DD/MM/YYYY');
+      temp.texto = e.text.length >= 500 ? e.text.substr(0, 500) : e.text
       return temp;
     })});
   });
@@ -71,7 +72,7 @@ app.get('/contacto', function(req, res){
   res.render('contacto');
 });
 
-app.post('/send', (req, res) => {
+app.get('/send', (req, res) => {
   transport.sendMail({
     from: 'CAPAC INFO <arcaniteamp@gmail.com>',
     to: 'hazielfe@gmail.com',
@@ -87,10 +88,10 @@ app.post('/send', (req, res) => {
   }, (err, response) => {
     if(err) {
       console.log(err);
-      res.render('home', {err: 'No se pudo enviar el formulario.'});
+      return res.json({msg: 'Correo enviado correctamente'})
     } else {
       console.log(response);
-      res.redirect('/contacto');
+      return res.json({err: 'Error, no se pudo enviar el correo'})
     }
   });
 });
