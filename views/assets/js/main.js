@@ -43,21 +43,24 @@ jQuery(function($) {'use strict',
 	form.submit(function(event){
 		event.preventDefault();
 		var form_status = $('#msj');
+		var data = {
+			"name":$('input[name=name]').val(),
+			"to":$('input[name=to]').val(),
+			"phone":$('input[name=phone]').val(),
+			"subject":$('input[name=subject]').val(),
+			"message":$('textarea[name=message]').val()
+		}
+		console.log(data);
 		$.ajax({
 			url: "/send",
-			data: {
-				"name":$('input[name=name]').val(),
-				"to":$('input[name=to]').val(),
-				"phone":$('input[name=phone]').val(),
-				"subject":$('input[name=subject]').val(),
-				"message":$('textarea[name=message]').val()
-			},
-
+			data: data,
+			method: 'post',
 			beforeSend: function(){
 				form.prepend( form_status.html('<p><i class="fa fa-spinner fa-spin"></i> Enviando email...</p>').fadeIn() );
 			}
 		}).done(function(data){
-			form_status.html('<p class="text-success">' + data + '</p>').delay(3000).fadeOut();
+			console.log(data);
+			form_status.html('<p class="text-success">' + data.msg ? data.msg : data.err + '</p>').delay(3000).fadeOut();
 		});
 	});
 

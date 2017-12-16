@@ -10,10 +10,12 @@ const app = express();
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
-
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 app.use(express.static('views/assets'));
 
 const transport = nodemailer.createTransport({
+  port: 465,
   service: 'gmail',
   auth: {
     user: 'arcaniteamp@gmail.com',
@@ -72,7 +74,8 @@ app.get('/contacto', function(req, res){
   res.render('contacto');
 });
 
-app.get('/send', (req, res) => {
+app.post('/send', (req, res) => {
+  console.log(req.body);
   transport.sendMail({
     from: 'CAPAC INFO <arcaniteamp@gmail.com>',
     to: 'hazielfe@gmail.com',
@@ -88,10 +91,10 @@ app.get('/send', (req, res) => {
   }, (err, response) => {
     if(err) {
       console.log(err);
-      return res.json({msg: 'Correo enviado correctamente'})
+      return res.json({err: 'Error, no se pudo enviar el correo'})
     } else {
       console.log(response);
-      return res.json({err: 'Error, no se pudo enviar el correo'})
+      return res.json({msg: 'Correo enviado correctamente'})
     }
   });
 });
