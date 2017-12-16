@@ -1,85 +1,67 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
       {{#each eventos}}
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" style="text-transform: uppercase; text-align: center;">{{title}}</h4>
-          </div>
-          <div class="modal-body">
-            <form method="POST" action="#">
-              <div class="row" id="divDatosEvento">
-                <div class="col-md-6">
-                  <label>Información del evento: </label><br>
-                  {{texto}}
-                  <br>
-                  <label>Fecha: </label><br>
-                    {{date}}
-                  <br>
-                  <label>Horario: </label><br>
-                    {{hourStart}} - {{hourEnd}}
-                  <br>
-                  <label>Donativo: </label><br>
-                    ${{donation}}
-                  <br>
-                </div>
-                <div class="col-md-6">
-                  <img id="imagenEvento" src="{{img}}" class="img-responsive">
-                </div>
-              </div>
-            </form>
-          </div>
-          <div style="padding: 1rem">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{id}}">Detalles</button>
-          </div>
-
-          <!-- Modal -->
-          <div id="{{id}}" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Modal Header</h4>
-                </div>
-                <div class="modal-body">
-                  <form method="POST" action="#">
-                    <div class="row" id="divDatosEvento">
-                      <div class="col-md-6">
-                        <label>Información del evento: </label><br>
-                        {{text}}
-                        <br>
-                        <label>Fecha: </label><br>
-                          {{date}}
-                        <br>
-                        <label>Horario: </label><br>
-                          {{hourStart}} - {{hourEnd}}
-                        <br>
-                        <label>Donativo: </label><br>
-                          ${{donation}}
-                        <br>
-                      </div>
-                      <div class="col-md-6">
-                        <img id="imagenEvento" src="{{img}}" class="img-responsive">
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                </div>
-              </div>
-
+      <div class="col-xs-12 col-sm-6 col-md-6">
+          <div style="border: 1px solid; border-radius: 50px 15px; border-color: #E0A66C; box-sizing: border-box;">
+            <header style="text-align: center; border-radius: 7px; padding-top: 3px;">
+              <h2>{{title}}</h2>
+            </header>
+            <div style="text-align: center;">
+              <img src="{{img}}" style="width: 50%; height: 20%;"/>
+            </div>
+            <div style="padding-left: 7px; overflow: hidden">
+              <p>{{{texto}}}</p>
+            </div>
+            <div style="padding: 1rem">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{id}}">Ver más</button>
             </div>
           </div>
-
-
-        </div>
       </div>
+
+            <!-- Modal -->
+            <div id="{{id}}" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" style="text-transform: uppercase; text-align: center;">{{title}}</h4>
+                  </div>
+                  <div class="modal-body">
+                    <form method="POST" action="#">
+                      <div class="row" id="divDatosEvento">
+                        <div class="col-md-6">
+                          <label>Información del evento: </label><br>
+                          {{text}}
+                          <br>
+                          <label>Fecha: </label><br>
+                            {{date}}
+                          <br>
+                          <label>Horario: </label><br>
+                            {{hourStart}} - {{hourEnd}}
+                          <br>
+                          <label>Donativo: </label><br>
+                            ${{donation}}
+                          <br>
+                        </div>
+                        <div class="col-md-6">
+                          <img id="imagenEvento" src="{{img}}" class="img-responsive">
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+
       {{/each}}
-    </div>
+
   </div>
 
 </div>
