@@ -18,8 +18,8 @@ const transport = nodemailer.createTransport({
   port: 465,
   service: 'gmail',
   auth: {
-    user: 'arcaniteamp@gmail.com',
-    pass: 'trxtrxtrx'
+    user: 'capac.psico@gmail.com',
+    pass: 'capacpsico'
   }
 });
 
@@ -77,8 +77,8 @@ app.get('/contacto', function(req, res){
 app.post('/send', (req, res) => {
   console.log(req.body);
   transport.sendMail({
-    from: 'CAPAC INFO <arcaniteamp@gmail.com>',
-    to: 'hazielfe@gmail.com',
+    from: 'CAPAC INFO <capac.psico@gmail.com>',
+    to: 'capac.psico@gmail.com',
     subject: 'CAPAC INFO',
     html: `
       <h1>CAPAC INFO</h1><br>
