@@ -11,13 +11,12 @@
       {{/each}}
       </ul>
       <div class="row">
-
           {{#each galerias as |gal|}}
           <div class="portfolio-items">
             {{#each pictures as |pic|}}
             <div class="portfolio-item {{gal.id}} apps col-xs-12 col-sm-4 col-md-3">
               <div class="recent-work-wrap">
-                <img class="img-responsive" src="{{pic}}" alt="{{gal.name}}">
+                <img class="img-responsive" src="{{pic}}" alt="{{gal.name}}" style="height:200px;">
                 <div class="overlay">
                   <div class="recent-work-inner">
                     <h3><a href="#">{{gal.name}}</a></h3>
