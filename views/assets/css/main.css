@@ -1488,7 +1488,7 @@ ul.social_icons li  a i{
   border-radius: 3px;
   padding: 5px 15px;
 }
-
+/*
 .request h4:after {
   border-color: #E0A66C transparent transparent;
   border-style: solid;
@@ -1511,7 +1511,7 @@ ul.social_icons li  a i{
   left: 13px;
   position: absolute;
   z-index: -99999;
-}
+}*/
 
 .clients-area {
   padding: 60px;
