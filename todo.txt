@@ -1,0 +1,12 @@
+-> Servicios
+  Estilizar las secciones pequeñas debajo del párrafo de servicios (espacios, justificación)
+  El recuadro que está a un lado de servicios, va en negritas
+
+-> Eventos próximos
+  Los modals llevan el mismo estilo y estructura de el blog
+
+-> Inicio
+  Quitar la palabra "Servicios" que aparece arriba de la sección de facebook
+
+-> Eventos
+  Alineacion de las secciones de cada vista previa de blog
