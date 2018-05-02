@@ -1,13 +1,23 @@
+<style>
+  .images{
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .portrait{
+    height: 170px;
+    width: 270px;
+  }
+</style>
 <div class="container">
   <div class="row">
       {{#each eventos}}
-      <div class="col-xs-12 col-sm-6 col-md-6">
+      <div class="col-xs-12 col-sm-6 col-md-6" style="padding: 4px;">
           <div style="border: 1px solid; border-radius: 50px 15px; border-color: #E0A66C; box-sizing: border-box;">
             <header style="text-align: center; border-radius: 7px; padding-top: 3px;">
               <h2>{{title}}</h2>
             </header>
-            <div style="text-align: center;">
-              <img src="{{img}}" style="width: 50%; height: 20%;"/>
+            <div style="text-align: center;" class="portrait">
+              <img src="{{img}}" class="images"/>
             </div>
             <div style="padding-left: 7px; overflow: hidden">
               <p>{{{texto}}}</p>
@@ -25,12 +35,12 @@
                 <!-- Modal content-->
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="modal-title" style="text-transform: uppercase; text-align: center;">{{title}}</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">{{title}}</h4>
                   </div>
                   <div class="modal-body">
-                    <form method="POST" action="#">
-                      <div class="row" id="divDatosEvento">
-                        <div class="col-md-6">
+                      <!--<div class="row" id="divDatosEvento">
+                        <div class="col-md-6">-->
                           <label>Información del evento: </label><br>
                           {{text}}
                           <br>
@@ -43,12 +53,11 @@
                           <label>Donativo: </label><br>
                             ${{donation}}
                           <br>
-                        </div>
-                        <div class="col-md-6">
+                        <!--</div>-->
+                        <!--<div class="col-md-6">
                           <img id="imagenEvento" src="{{img}}" class="img-responsive">
-                        </div>
-                      </div>
-                    </form>
+                        </div>-->
+                      <!--</div>-->
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
