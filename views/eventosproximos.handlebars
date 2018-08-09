@@ -1,76 +1,69 @@
 <style>
-  .images{
+  .images {
     max-width: 100%;
     max-height: 100%;
   }
-  .portrait{
+
+  .portrait {
     height: 170px;
     width: 270px;
   }
 </style>
 <div class="container">
   <div class="row">
-      {{#each eventos}}
+    {{#each eventos}}
       <div class="col-xs-12 col-sm-6 col-md-6" style="padding: 4px;">
-          <div style="border: 1px solid; border-radius: 50px 15px; border-color: #E0A66C; box-sizing: border-box;">
-            <header style="text-align: center; border-radius: 7px; padding-top: 3px">
-              <h2 style="font-size: 95%;">{{title}}</h2>
-            </header>
-            <div style="text-align: center;" class="portrait">
-              <img src="{{img}}" class="images"/>
-            </div>
-            <div style="padding-left: 7px; overflow: hidden">
-              <p>{{{texto}}}</p>
-            </div>
-            <div style="padding: 1rem">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{id}}">Ver más</button>
-            </div>
+        <div style="border: 1px solid; border-radius: 50px 15px; border-color: #E0A66C; box-sizing: border-box;">
+          <header style="text-align: center; border-radius: 7px; padding-top: 3px">
+            <h2 style="font-size: 95%;">{{title}}</h2>
+          </header>
+          <div style="text-align: center;" class="portrait">
+            <img src="{{img}}" class="images" />
           </div>
+          <div style="padding-left: 7px; overflow: hidden">
+            <p>{{{texto}}}</p>
+          </div>
+          <div style="padding: 1rem">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{id}}">Ver más</button>
+          </div>
+        </div>
       </div>
-
-            <!-- Modal -->
-            <div id="{{id}}" class="modal fade" role="dialog">
-              <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">{{title}}</h4>
-                  </div>
-                  <div class="modal-body">
-                      <!--<div class="row" id="divDatosEvento">
+      <!-- Modal -->
+      <div id="{{id}}" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">{{title}}</h4>
+            </div>
+            <div class="modal-body">
+              <!--<div class="row" id="divDatosEvento">
                         <div class="col-md-6">-->
-                          <label>Información del evento: </label><br>
-                          {{{text}}}
-                          <br>
-                          <label>Fecha: </label><br>
-                            {{date}}
-                          <br>
-                          <label>Horario: </label><br>
-                            {{hourStart}} - {{hourEnd}}
-                          <br>
-                          <label>Donativo: </label><br>
-                            ${{donation}}
-                          <br>
-                        <!--</div>-->
-                        <!--<div class="col-md-6">
+              <label>Información del evento: </label>
+              <br> {{{text}}}
+              <br>
+              <label>Fecha: </label>
+              <br> {{date}}
+              <br>
+              <label>Horario: </label>
+              <br> {{hourStart}} - {{hourEnd}}
+              <br>
+              <label>Donativo: </label>
+              <br> ${{donation}}
+              <br>
+              <!--</div>-->
+              <!--<div class="col-md-6">
                           <img id="imagenEvento" src="{{img}}" class="img-responsive">
                         </div>-->
-                      <!--</div>-->
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                  </div>
-                </div>
-
-              </div>
+              <!--</div>-->
             </div>
-
-
-
-      {{/each}}
-
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/each}}
   </div>
-
 </div>
