@@ -34,7 +34,11 @@ app.get('/', function(req, res){
 });
 
 app.get('/nosotros', function(req, res){
-  res.render('nosotros');
+  request.get(`${API_CAPAC}/publicprofiile`, (err, response, body) => {
+    if(err) return res.render('home', {evento: {err: 'No se pudieron cargar los eventos.'}});
+    let pprofiles = JSON.parse(body).reverse();
+    res.render('nosotros', {profiles: pprofiles});
+  })
 });
 
 app.get('/servicios', function(req, res){

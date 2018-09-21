@@ -7,7 +7,6 @@ jQuery(function($) {'use strict',
 		});
 	});
 
-
 	// accordian
 	$('.accordion-toggle').on('click', function(){
 		$(this).closest('.panel-group').children().each(function(){
@@ -50,16 +49,14 @@ jQuery(function($) {'use strict',
 			"subject":$('input[name=subject]').val(),
 			"message":$('textarea[name=message]').val()
 		}
-		console.log(data);
 		$.ajax({
 			url: "/send",
 			data: data,
 			method: 'post',
 			beforeSend: function(){
-				form.prepend( form_status.html('<p><i class="fa fa-spinner fa-spin"></i> Enviando email...</p>').fadeIn() );
+				form.prepend( form_status.html('<p><i class="fa fa-spinner fa-spin"></i>Enviando email...</p>').fadeIn() );
 			}
 		}).done(function(data){
-			console.log(data);
 			form_status.html('<p class="text-success">' + data.msg ? data.msg : data.err + '</p>').delay(3000).fadeOut();
 		});
 	});
@@ -77,4 +74,35 @@ jQuery(function($) {'use strict',
 	$("a[rel^='prettyPhoto']").prettyPhoto({
 		social_tools: false
 	});
+
+	var type = 1
+	var start = -90
+	var radius = '12em'
+	var $elements = $('.liUno')
+	var numberOfElements = (type === 1) ?  $elements.length : $elements.length - 1
+	var slice = 360 * type / numberOfElements;
+
+	$elements.each(function(i) {
+	    var $self = $(this),
+	        rotate = slice * i + start,
+	        rotateReverse = rotate * -1;
+
+	    $self.css({
+	        'transform': 'rotate(' + rotate + 'deg) translate(' + radius + ') rotate(' + rotateReverse + 'deg)'
+	    });
+	})
+
 });
+
+
+/*
+$("li").each(function(i) {
+    var $self = $(this),
+        rotate = slice * i + start,
+        rotateReverse = rotate * -1;
+
+    $self.css({
+        'transform': 'rotate(' + rotate + 'deg) translate(' + radius + ') rotate(' + rotateReverse + 'deg)'
+    });
+})
+*/
