@@ -1,25 +1,9 @@
 <style>
-.ulUno {
-  position: relative;
-  /*top: 200px; left: 200px; /*for example purposes only*/
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.liUno {
-  list-style-type: none;
-  position: absolute;
-  -webkit-transition: all 2s linear;
-  -moz-transition: all 2s linear;
-  transition: all 2s linear;
-}
-
-.centro{
-  list-style-type: none;
+.images {
+  max-width: 50%;
+  max-height: 50%;
 }
 </style>
-
 <section id="about-us">
     <div class="container">
         <div class="center wow fadeInDown">
@@ -47,20 +31,67 @@
                 y mejorar el bienestar de las personas en todo el país.
             </p>
         </div>
-        <!--<div class="center wow fadeInDown">
-            <ol class="ulUno">
-              <li class="centro"></li>
-              <li class="liUno">Item 1</li>
-              <li class="liUno">Item 2</li>
-              <li class="liUno">Item 3</li>
-              <li class="liUno">Item 4</li>
-              <li class="liUno">Item 5</li>
-              <li class="liUno">Item 6</li>
-              <li class="liUno">Item 7</li>
-              <li class="liUno">Item 8</li>
-              <li class="liUno">Item 9</li>
-            </ol>
-        </div>-->
+        <div class="center wow fadeInDown">
+          <h2>Nosotras</h2>
+        </div>
+        <div class="container">
+          <div class="row">
+            {{#each profiles}}
+            <div class=" apps col-xs-12 col-sm-4 col-md-3">
+              <div class="recent-work-wrap">
+                <img class="img-responsive" src="{{img}}" alt="{{name}}" style="height:300px;">
+                <div class="overlay">
+                  <div class="recent-work-inner">
+                    <h3>
+                      <a href="#" data-toggle="modal" data-target="#{{id}}">{{name}}</a>
+                    </h3>
+                    <a class="preview" href="#" data-toggle="modal" data-target="#{{id}}">
+                      <i class="fa fa-eye"></i>Ver más
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Modal -->
+            <div id="{{id}}" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                    <p style="text-align: center; ">
+                      <img class="images" src="{{img}}" alt="{{name}}">
+                    </p>
+                    <h2 style="text-align: center;">{{ name }}</h2>
+                    <p style="text-align: center;">
+                      {{ titulo }}
+                    </p>
+                    {{{ contact }}}
+                    <p style="tetx-align: center;">
+                      <strong>Formación Académica:</strong>
+                    </p>
+                    {{{ formacionAcademica }}}
+                    <p style="tetx-align: center;">
+                      <strong>Perfil y Especialidad:</strong>
+                    </p>
+                    {{{ perfil }}}
+                    <p style="tetx-align: center;">
+                      <strong>Cursos y Talleres:</strong>
+                    </p>
+                    {{{ talleres }}}
+                    <p><strong>Costo por sesión: </strong>${{ costoSesion }}</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+        </div>
         <div class="get-started center wow fadeInDown">
             <h2>Alianza CAPAC</h2>
             <p class="lead">Nuestro compromiso es brindar la mejor atención, por ello nuestro modelo de trabajo incluye establecer alianzas
